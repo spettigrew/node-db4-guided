@@ -19,7 +19,8 @@ exports.up = async function(knex) {
         .notNullable() 
         .references("id")
         .inTable("species")
-        .onDelete("CASCADE") // when species gets deleted, so does animal. OnDelete tells sqlite what to do if this species no longer exists. If link is broken.
+        .onDelete("CASCADE") // when species gets deleted, so does animal. OnDelete tells sqlite what to do if this species no longer exists. If link is broken. CASCADE that delete
+        
         .onUpdate("CASCADE")
     })
 // create JOIN table Zoos_Animals table
