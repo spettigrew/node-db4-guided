@@ -19,18 +19,25 @@ exports.up = async function(knex) {
         .notNullable() 
         .references("id")
         .inTable("species")
+        .onDelete("CASCADE") // when species gets deleted, so does animal. OnDelete tells sqlite what to do if this species no longer exists. If link is broken.
+        .onUpdate("CASCADE")
     })
 // create JOIN table Zoos_Animals table
 
     await knex.schema.createTable("zoos_animals", (table) => {
         table.integer("zoo_id")
-        .notNullable()
-        .references("id")
-        .inTable("zoos")
+            .notNullable()
+            .references("id")
+            .inTable("zoos")
+            .onDelete("CASCADE")
+            .onUpdate("CASCADE")
+
         table.integer("animal_id")
             .notNullable()
             .references("id")
             .inTable("animals")
+            .onDelete("CASCADE")
+            .onUpdate("CASCADE")
             // dates of when the animal was at a particular zoo
         table.date("from")
         table.date("to")
