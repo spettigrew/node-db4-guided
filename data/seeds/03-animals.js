@@ -12,6 +12,6 @@ exports.seed = async (knex) => {
     { name: "Stephen", species_id: 7 },
     { name: "Rocky", species_id: 8 },
     // species_id must match valid species
-    // { name: "Bellatrix", species_id: 19 },
+    //  { name: "Bellatrix", species_id: 19 }, will give an error. No species of 19.
   ])
 }
